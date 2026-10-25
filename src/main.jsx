@@ -21,5 +21,8 @@ createRoot(document.getElementById('root')).render(
 </StrictMode>,
 )
 })
-.catch((err) => showDiag('startup', err))
+.catch((err) => {
+  const msg = String(err?.message || err)
+  document.body.innerText = 'STARTUP ERROR: ' + msg.slice(0, 300)
+})
 // TEMP-DIAGNOSTIC-END
